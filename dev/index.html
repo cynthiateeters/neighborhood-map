@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <title>Manhattan Art Museums</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=icon href=images/favicon.ico type=image/x-icon>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- plugins -->
+    <link rel="stylesheet" href="css/offline-theme-dark.css">
+    <link rel="stylesheet" href="css/offline-language-english.css">
+
+    <link rel="stylesheet" href="css/gdropdown.css">
+    <link rel="stylesheet" href="css/off-canvas.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700italic,900italic" rel="stylesheet">
+
+</head>
+
+<body class="nav-expanded">
+    <div class="headerContainer">
+        <nav>
+            <div id="modelItems">
+                <div id="menu">
+                    <div id="listMenu">
+                        <div class="listScroll">
+
+                            <div data-bind="if: viewModel.filterOnName">
+                                <div class="museumLabel">Museums</div>
+                                <br>
+                                <div data-bind="foreach: viewModel.filteredItems()">
+                                    <div class="museumList" data-bind="click: clickList, css: { selected: isSelected()}">
+                                        <div class="museumItem" data-bind="text: name()"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div data-bind="ifnot: viewModel.filterOnName">
+                                <div class="museumLabel" data-bind="text: viewModel.categoryListTitle()"></div>
+                                <br>
+                                <div data-bind="foreach: viewModel.filteredItemsByCat()">
+                                    <div class="museumList" data-bind="click: clickList, css: { selected: isSelected()}">
+                                        <div class="museumItem" data-bind="text: name()"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modelItems -->
+        </nav>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+        </div>
+
+        <!-- Header Bar : Includes right-sliding drawer : open on defalut-->
+        <div class="col-xs-7 col-sm-6 col-md-4">
+            <div>
+                <input class="form-control  myInputText pull-down" placeholder="name filter..." data-bind="value: viewModel.filter, valueUpdate: 'afterkeydown'" />
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="navbar-header pull-right">
+                <a id="nav-expander" class="nav-expander fixed museumLabel">
+            List &nbsp;<i class="fa fa-arrows-h fa-lg"></i>
+          </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="mapContainer" class="mapContainerClass"></div>
+
+    <!-- http://github.hubspot.com/offline/docs/welcome/      -->
+    <script src="js/offline.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+    <script src="js/knockout-3.2.0.js"></script>
+    <script src="js/knockout.mapping-latest.js"></script>
+    <script src="js/infobubble-mod.js"></script>
+    <script src="js/lscache.js"></script>
+    <script src="js/mapapp.js"></script>
+    <script src="js/gdropdown.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=PUT_YOUR_KEY_HERE=googleSuccess" async onerror="googleError()"></script>
+
+
+    <script>
+        /* Add javascript for view here */
+        $(document).ready(function() {
+
+            //Navigation Menu Slider
+            $('#nav-expander').on('click', function(e) {
+                e.preventDefault();
+                $('body').toggleClass('nav-expanded');
+            });
+            $('#nav-close').on('click', function(e) {
+                e.preventDefault();
+                $('body').removeClass('nav-expanded');
+            });
+
+            //make top text appear aligned to bottom:
+            //http://stackoverflow.com/questions/13841387/how-do-i-bottom-align-grid-elements-in-bootstrap-fluid-layout
+
+            function fixHeader() {
+                //for each element that is classed as 'pull-down'
+                //reset margin-top for all pull down items
+                $('.pull-down').each(function() {
+                    $(this).css('margin-top', 0);
+                });
+
+                //set its margin-top to the difference between its own height and the height of its parent
+                $('.pull-down').each(function() {
+                    if ($(window).innerWidth() >= 768) {
+                        $(this).css('margin-top', $(this).parent().height() - $(this).height());
+                    }
+                });
+            }
+
+            $(window).resize(function() {
+                fixHeader();
+            });
+
+            fixHeader();
+        });
+    </script>
+</body>
+
+</html>

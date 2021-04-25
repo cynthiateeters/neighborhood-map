@@ -1,0 +1,333 @@
+body {
+  font-family: "Lato", sans-serif;
+  z-index: 20;
+}
+
+h1 {
+  text-align: center;
+}
+
+.map-canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+
+/*
+Attempting to follow Google's "Use Legible Font Sizes"
+https://developers.google.com/speed/docs/insights/UseLegibleFontSizes?hl=en
+
+
+1. Use a base font size of 16 CSS pixels.
+Adjust the size as needed based on properties of the font being used.
+
+2. Use sizes relative to the base size to define the typographic scale.
+
+3. Text needs vertical space between its characters and may need to be adjusted
+for each font. The general recommendation is to use the
+browser default line-height of 1.2em.
+
+4. Restrict the number of fonts used and the typographic scale: too many fonts
+and font sizes lead to messy and overly complex page layouts.
+
+"For example, the following CSS snippet defines a baseline font size of 16 CSS
+pixels, with CSS class 'small' that has a font size of 75% the baseline font
+(12 CSS pixels), and CSS class 'large' that has a font size of 125% the
+baseline font (20 CSS pixels):"
+
+Based on above Google statement, I have also made a small and large class.
+
+See also:
+https://css-tricks.com/a-couple-of-best-practices-for-tablet-friendly-design/
+
+
+
+*/
+
+html {
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+.small {
+  font-size: 0.75rem
+}
+
+.large {
+  font-size: 1.25rem;
+}
+
+body {
+  height: 87%;
+  background-color: black;
+}
+
+@media (min-height: 360px) {
+  body {
+    height: 87%;
+  }
+}
+
+@media (min-height: 600px) {
+  body {
+    height: 89%;
+  }
+}
+
+@media (min-height: 800px) {
+  body {
+    height: 91%;
+  }
+}
+
+.headerContainer {
+  height: 5%;
+}
+
+.mapContainerClass {
+  margin-left: 0.5%;
+  width: 95%;
+  height: 100%
+}
+
+.infoBubbleLabel {
+  font-size: 1rem;
+}
+
+.infoBubbleStyle {
+  font-size: 0.75rem;
+  padding: 1rem 0.75rem;
+}
+
+@media (min-width: 600px) {
+  .infoBubbleStyle {
+    font-size: 1rem;
+  }
+}
+
+*[itemprop="name"] {
+  font-weight: bold;
+}
+
+*[itemprop="name"]:after {
+  white-space: pre;
+  content: "\A";
+}
+
+*[itemprop="streetAddress"]:after {
+  white-space: pre;
+  content: "\A";
+}
+
+*[itemprop="telephone"]:after {
+  white-space: pre;
+  content: "\A";
+}
+
+*[itemprop="addressLocality"]:after {
+  content: ", "
+}
+
+*[itemprop="addressRegion"] {
+  text-transform: uppercase;
+}
+
+*[itemprop="addressRegion"]:after {
+  content: ", "
+}
+
+.museumList {
+  background-color: black;
+  color: white;
+  padding-left: 2%;
+  padding-bottom: 15%;
+  margin-bottom: 0;
+}
+
+.museumItem {
+  background-color: black;
+  padding-left: 0.05rem;
+  margin-bottom: 0;
+}
+
+.museumLabel {
+  background-color: black;
+  color: white;
+  font-weight: 400;
+  padding-top: 17%;
+  padding-bottom: 15%;
+  margin-bottom: 0;
+  margin-left: 15%;
+}
+
+.museumList:hover .museumItem {
+  opacity: 1;
+}
+
+.museumList .museumItem:hover {
+  color: black;
+  background-color: white;
+  opacity: 1.0;
+}
+
+.selected .museumItem {
+  color: black;
+  background-color: white;
+  box-shadow: 1px 1px 1px white;
+}
+
+::-webkit-input-placeholder {
+  /* Safari, Chrome and Opera */
+  color: red;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: red;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: red;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: red;
+}
+
+::-ms-input-placeholder {
+  /* Edge */
+  color: red;
+}
+
+:placeholder-shown {
+  /* Standard one last! */
+  color: red;
+}
+
+.catList {
+  color: black;
+  padding-left: 1rem;
+  border-radius: 0;
+}
+
+.catList:last-child {
+  color: white;
+  background: red;
+  border-color: red;
+  border-radius: 0;
+}
+
+.fa-red {
+  color: red;
+  background-color: #eee;
+}
+
+listScroll {
+  padding-top: 10rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  font-size: 16px;
+  background-color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  line-height: 1.5rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+.navContainer {
+  background-color: black;
+  color: white;
+  padding: 0.2rem;
+}
+
+.myInputText {
+  width: 8.5rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  padding: 0.3rem;
+  margin-bottom: 0.1rem;
+}
+
+hr {
+  padding: 0;
+  margin-top: 1rem;
+  margin-bottom: 1 rem;
+  border-top: 1px solid black;
+}
+
+.listMenu {
+  padding: 0.2rem;
+}
+
+.fancyTitle {
+  font-family: Playfair Display, cursive;
+  font-style: italic;
+  font-stretch: extra-expanded;
+  letter-spacing: 0.3rem;
+  font-size: 0.75rem;
+  color: white;
+  background-color: black;
+}
+
+.bigLetters {
+  font-size: 3.6rem;
+  vertical-align: text-bottom;
+}
+
+.lightOnDark {
+  background-color: black;
+  color: white;
+}
+
+nav {
+  max-height: 99%;
+}

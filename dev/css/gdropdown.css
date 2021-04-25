@@ -1,0 +1,103 @@
+/*
+
+Modified from code by Briana Sullivan
+
+http://stackoverflow.com/a/19725966
+http://brianaccomresearch.blogspot.com/2012/03/google-map-style-drop-down.html
+*/
+
+.container {
+  width: 12rem;
+  z-index: 1;
+  margin-top: 0.3rem;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-family: Lato, sans-serif;
+}
+
+.dropDownControl {
+  direction: ltr;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  font-family: Lato, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  position: relative;
+  -webkit-user-select: none;
+  user-select: none;
+  border-radius: 5px;
+  margin-left: -0.5rem;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+  color: red;
+  padding: 0.8rem 0.2rem;
+  background-color: rgb(255, 255, 255);
+  z-index: 2;
+}
+
+@media (min-height: 768px) {
+  .dropDownControl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.dropDownArrow {
+  -webkit-user-select: none;
+  user-select: none;
+  border-width: 0;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+  padding: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  margin-top: -2px;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.dropDownOptionsDiv {
+  background-color: white;
+  z-index: 0;
+  /*need this to make the box look cool, but this stops the hover and title from working on items in the box! */
+  border-radius: 5px;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+  position: relative;
+  text-align: left;
+  display: none;
+  padding: 1rem;
+}
+
+.dropDownItemDiv {
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 0.3rem;
+  padding-right: 1rem;
+  background-color: rgb(255, 255, 255);
+  color: red;
+}
+
+@media (min-height: 768px) {
+  .dropDownItemDiv {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.dropDownItemDiv:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.dropDownControl:hover,
+.button:hover {
+  background: -webkit-linear-gradient(top, rgb(255, 255, 255), rgb(230, 230, 230));
+}
